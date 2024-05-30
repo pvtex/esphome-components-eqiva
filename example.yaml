@@ -7,8 +7,8 @@ esp32:
   framework:
     type: esp-idf
     # Uncomment below for ESP32-C3 if you have unexpected reboots when encrypting data
-    # sdkconfig_options:
-      # CONFIG_BOOTLOADER_WDT_TIME_MS: "60000"
+    sdkconfig_options:
+      CONFIG_BOOTLOADER_WDT_TIME_MS: "60000"
   
 # Enable logging
 logger:
@@ -41,8 +41,8 @@ wifi:
        mac_address: !lambda 'return id(mac_address).state;' 
        user_id: !lambda 'return id(user_id).state;'
        user_key: !lambda 'return id(user_key).state;'
-  on_disconnect:
-    - esp32_ble_tracker.stop_scan:
+#  on_disconnect:
+#    - esp32_ble_tracker.stop_scan:
 
       
 
